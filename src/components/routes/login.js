@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { navigate } from 'gatsby'
-import { Formik, Form as FormikForm } from 'formik'
+import { Formik } from 'formik'
 import * as Yup from 'yup'
 
 import { setUser, isLoggedIn } from '../../services/auth'
@@ -22,7 +22,6 @@ const Login = () => {
   const { firebase } = useContext(FirebaseContext)
 
   const handleSubmit = ({ email, password }, bag) => {
-    console.log('submitted')
     firebase
       .login({ email, password })
       .then(() => {

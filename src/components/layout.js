@@ -1,14 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import { Link, StaticQuery, graphql } from 'gatsby'
 import { Container, Grid, Menu } from 'semantic-ui-react'
+
 import { FirebaseContext, useAuth } from '../services/Firebase'
-
 import Header from './header'
-
+import Footer from './footer'
 import 'semantic-ui-less/semantic.less'
-import { Link } from 'gatsby'
 
 const LinkedItem = ({ children, ...props }) => (
   <Menu.Item as={Link} activeClassName="active" {...props}>
@@ -50,6 +49,7 @@ const Layout = ({ children }) => {
                       Home
                     </LinkedItem>
                     <LinkedItem to="/about">About</LinkedItem>
+                    <LinkedItem to="/trips">Trips</LinkedItem>
                     <LinkedItem to="/content">Contentful</LinkedItem>
                     <LinkedItem to="/account">Members</LinkedItem>
                     <LinkedItem to="/app/admin">Admin</LinkedItem>
@@ -60,6 +60,7 @@ const Layout = ({ children }) => {
                   {children}
                 </Grid.Column>
               </Grid>
+              <Footer />
             </Container>
           </FirebaseContext.Provider>
         </>

@@ -1,5 +1,5 @@
-import firebaseConfig from "./config"
-import axios from "axios"
+import firebaseConfig from './config'
+// import axios from "axios"
 
 class Firebase {
   constructor(app) {
@@ -15,33 +15,33 @@ class Firebase {
 
   subscribeToBookComments({ bookId, onSnapshot }) {
     // create reference to book doc
-    const bookRef = this.db.collection("books").doc(bookId)
+    const bookRef = this.db.collection('books').doc(bookId)
 
     return this.db
-      .collection("comments")
-      .where("book", "==", bookRef)
-      .orderBy("dateCreated", "desc")
+      .collection('comments')
+      .where('book', '==', bookRef)
+      .orderBy('dateCreated', 'desc')
       .onSnapshot(onSnapshot)
   }
 
   async postComment({ text, bookId }) {
-    const postCommentCallable = this.functions.httpsCallable("postComment")
+    const postCommentCallable = this.functions.httpsCallable('postComment')
     return postCommentCallable({ text, bookId })
   }
 
   async createAuthor({ authorName }) {
-    const createAuthorCallable = this.functions.httpsCallable("createAuthor")
+    const createAuthorCallable = this.functions.httpsCallable('createAuthor')
     return createAuthorCallable({
       authorName,
     })
   }
 
   async getAuthors() {
-    return this.db.collection("authors").get()
+    return this.db.collection('authors').get()
   }
 
   async createBook({ bookName, authorId, bookCover, summary }) {
-    const createBookCallable = this.functions.httpsCallable("createBook")
+    const createBookCallable = this.functions.httpsCallable('createBook')
 
     return createBookCallable({
       bookName,
@@ -53,8 +53,8 @@ class Firebase {
 
   getUserProfile({ userId, onSnapshot }) {
     return this.db
-      .collection("publicProfiles")
-      .where("userId", "==", userId)
+      .collection('publicProfiles')
+      .where('userId', '==', userId)
       .limit(1)
       .onSnapshot(onSnapshot)
   }
@@ -62,7 +62,7 @@ class Firebase {
   async register({ email, password, username }) {
     await this.auth.createUserWithEmailAndPassword(email, password)
     const createProfileCallable = this.functions.httpsCallable(
-      "createPublicProfile"
+      'createPublicProfile'
     )
     return createProfileCallable({
       username,

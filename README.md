@@ -6,6 +6,7 @@ This is my boilerplate for a Gatsby hybrid app. I have added in simple-auth with
 
 Gatsby Semantic-UI starter https://github.com/pretzelhands/gatsby-starter-semantic-ui
 Gatsby JS & Firebase (Tom Phillips) Udemy Course https://www.udemy.com/share/1024WWA0MZcV9VQnw=/
+Gatsby Tutorial & Projects Course (Smilga) https://www.udemy.com/share/101XUAA0MZcV9VQnw=/
 
 ## GETTING STARTED
 
@@ -67,16 +68,19 @@ export default firebaseConfig
 
 ## TODO
 
+- Strapi
 - Firestore CRUD
+- Stripe
 - Deployment
-- Typescript
 
 ## KIV
 
-- Styled Component Navbar
+- Styled Component & CSS
+- Typescript
 
 ## DONE
 
+- Contentful
 - Image Layout
 - Organize
 - Port to Semantic-UI-React
