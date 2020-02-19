@@ -12,7 +12,7 @@ const BookTemplate = props => {
         authorName={props.data.book.author.name}
         bookSummary={props.data.book.summary}
         bookTitle={props.data.book.title}
-        bookCover={props.data.book.localImage.childImageSharp.fixed}
+        bookCover={props.data.book.localImage.childImageSharp.fluid}
       />
     </Layout>
   )
@@ -31,6 +31,9 @@ export const query = graphql`
       }
       localImage {
         childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
           fixed(width: 200) {
             ...GatsbyImageSharpFixed
           }

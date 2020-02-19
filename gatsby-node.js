@@ -26,7 +26,6 @@ exports.onCreatePage = async ({ actions, page }) => {
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-  const bookTemplate = path.resolve('src/components/templates/bookTemplate.js')
 
   return graphql(`
     {
@@ -34,6 +33,14 @@ exports.createPages = ({ graphql, actions }) => {
         edges {
           node {
             id
+          }
+        }
+      }
+      tours: allContentfulTour {
+        edges {
+          node {
+            id
+            slug
           }
         }
       }
@@ -46,8 +53,16 @@ exports.createPages = ({ graphql, actions }) => {
     result.data.allBook.edges.forEach(book => {
       createPage({
         path: `/book/${book.node.id}`,
-        component: bookTemplate,
+        component: path.resolve('src/components/templates/bookTemplate.js'),
         context: { bookId: book.node.id },
+      })
+    })
+
+    result.data.tours.edges.forEach(tour => {
+      createPage({
+        path: `/tour/${tour.node.slug}`,
+        component: path.resolve('src/components/templates/tourTemplate.js'),
+        context: { tourId: tour.node.id },
       })
     })
   })

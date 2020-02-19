@@ -50,6 +50,7 @@ const Layout = ({ children }) => {
                       Home
                     </LinkedItem>
                     <LinkedItem to="/about">About</LinkedItem>
+                    <LinkedItem to="/content">Contentful</LinkedItem>
                     <LinkedItem to="/account">Members</LinkedItem>
                     <LinkedItem to="/app/admin">Admin</LinkedItem>
                   </Menu>

@@ -27,7 +27,7 @@ const IndexPage = props => {
             bookTitle={edge.node.title}
             bookSummary={edge.node.summary}
             authorName={edge.node.author.name}
-            bookCover={edge.node.localImage.childImageSharp.fixed}
+            bookCover={edge.node.localImage.childImageSharp.fluid}
             key={edge.node.id}
           >
             <div>
@@ -39,7 +39,7 @@ const IndexPage = props => {
         ))}
       </section>
       <section>
-        <div>Image</div>I
+        <div>Image</div>
       </section>
     </Layout>
   )
@@ -60,6 +60,9 @@ export const query = graphql`
           }
           localImage {
             childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
               fixed(width: 200) {
                 ...GatsbyImageSharpFixed
               }

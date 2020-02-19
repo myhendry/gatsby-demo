@@ -15,15 +15,20 @@ Gatsby JS & Firebase (Tom Phillips) Udemy Course https://www.udemy.com/share/102
 
 3. You will need to add following files with your own configuration details
 
-** In root, .env.development **
+**In root, .env.development**
 
 ```
+# AUTH0 SETUP
 AUTH0_DOMAIN=???.auth0.com
-AUTH0_CLIENTID=????
+AUTH0_CLIENTID=???
 AUTH0_CALLBACK=http://localhost:8000/callback
+
+# CONTENTFUL SETUP
+CONTENTFUL_ID==???
+CONTENTFUL_ACCESS_TOKEN==???
 ```
 
-** In root, firebase.json **
+**In root, firebase.json**
 
 ```
 {
@@ -41,7 +46,7 @@ AUTH0_CALLBACK=http://localhost:8000/callback
 
 ```
 
-** In src/services/Firebase/config.js **
+**In src/services/Firebase/config.js**
 
 ```
 const firebaseConfig = {
