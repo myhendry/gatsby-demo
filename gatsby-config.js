@@ -10,6 +10,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    `gatsby-plugin-styled-components`,
     'gatsby-plugin-less',
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -24,7 +25,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `limelight`,
+          'Odibee Sans',
           `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
         ],
         display: 'swap',

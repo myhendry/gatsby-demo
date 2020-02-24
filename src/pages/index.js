@@ -1,15 +1,14 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import { Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 import { BookItem } from '../components/common'
-import { Button } from 'semantic-ui-react'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
 import { toggleDarkMode } from '../store/app'
 
 const IndexPage = props => {
-  // console.log(props)
   return (
     <Layout>
       <SEO title="Home" />
