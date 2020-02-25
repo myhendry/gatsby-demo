@@ -38,6 +38,7 @@ const Layout = ({ children }) => {
               { name: 'keywords', content: 'sample, something' },
             ]}
           />
+
           <FirebaseContext.Provider value={{ user, firebase, loading }}>
             <Header siteTitle={data.site.siteMetadata.title} />
 

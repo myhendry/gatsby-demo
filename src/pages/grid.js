@@ -77,7 +77,7 @@ const InnerBox4 = styled.div`
   grid-row: 2/4;
 `
 
-const Css = () => {
+const Grid = () => {
   return (
     <Wrapper>
       <div>
@@ -140,4 +140,4 @@ const Css = () => {
   )
 }
 
-export default Css
+export default Grid

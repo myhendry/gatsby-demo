@@ -1,9 +1,24 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
+import { FaBeer, FaSpinner, FaAd, FaAnchor } from 'react-icons/fa'
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+  :root {
+    --primary: #ddd;
+    --secondary: #ccc;
+    --dark: #333;
+    --light: #fff;
+    --bilboard: #330000;
+    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  }
+`
 
 const Design = () => {
   return (
     <Container>
+      <GlobalStyle />
       <Body>
         <div>
           {/* Navigation */}
@@ -23,6 +38,7 @@ const Design = () => {
               </li>
             </ul>
           </MainNav>
+
           {/* Top Container */}
           <TopContainer>
             <Showcase>
@@ -53,7 +69,7 @@ const Design = () => {
           {/* Boxes Section */}
           <Boxes>
             <Box>
-              <p>Icon 1</p>
+              <FaBeer size={32} />
               <h3>Analytics</h3>
               <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi,
@@ -61,7 +77,7 @@ const Design = () => {
               </p>
             </Box>
             <Box>
-              <p>Icon 2</p>
+              <FaAd size={32} />
               <h3>Marketing</h3>
               <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi,
@@ -69,7 +85,7 @@ const Design = () => {
               </p>
             </Box>
             <Box>
-              <p>Icon 3</p>
+              <FaAnchor size={32} />
               <h3>Development</h3>
               <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi,
@@ -77,7 +93,7 @@ const Design = () => {
               </p>
             </Box>
             <Box>
-              <p>Icon 4</p>
+              <FaSpinner size={32} />
               <h3>Support</h3>
               <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi,
@@ -121,14 +137,25 @@ const Design = () => {
   )
 }
 
+//TODO Style Links and Buttons
+const GLink = styled.div`
+  li a {
+    background: var(--dark);
+    color: var(--light);
+    padding: 0.6rem 1.3rem;
+    text-decoration: none;
+    border: 0;
+  }
+`
+
 const Container = styled.div`
-  background: #ccc;
+  background: var(--secondary);
 `
 
 const Body = styled.body`
   display: grid;
   grid-gap: 20px;
-  background: #ccc;
+  background: var(--secondary);
   padding: 30px 50px;
 `
 
@@ -152,10 +179,7 @@ const MainNav = styled.nav`
     font-size: 1.1rem;
     box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
   }
-  a:hover {
-    background: #333;
-    color: #fff;
-  }
+
   > ul {
     display: grid;
     grid-gap: 20px;
@@ -163,49 +187,83 @@ const MainNav = styled.nav`
     list-style: none;
     grid-template-columns: repeat(4, 1fr);
   }
+
+  a:hover {
+    background: #333;
+    color: #fff;
+  }
+
+  @media screen and (max-width: 700px) {
+    > ul {
+      grid-template-columns: 1fr;
+      grid-gap: 10px;
+    }
+  }
 `
 
 const TopContainer = styled.div`
   display: grid;
   grid-gap: 20px;
+  margin-top: 1.5rem;
   grid-template-areas:
     'showcase showcase top-box-a'
     'showcase showcase top-box-b';
+
+  @media screen and (max-width: 700px) {
+    grid-template-areas:
+      'showcase showcase'
+      'top-box-a top-box-b';
+  }
+
+  @media screen and (max-width: 500px) {
+    grid-template-areas:
+      'showcase'
+      'top-box-a'
+      'top-box-b';
+  }
 `
 
 const Showcase = styled.div`
   grid-area: showcase;
   min-height: 400px;
-  background: green;
+  background: var(--bilboard);
   padding: 3rem;
+
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  box-shadow: var(--shadow);
 
   > h1 {
     font-size: 4rem;
     margin-bottom: 0;
-    color: #fff;
+    color: var(--light);
   }
 
   > p {
     font-size: 1.3rem;
     margin-top: 0;
-    color: #fff;
+    color: var(--light);
+  }
+
+  @media screen and (max-width: 700px) {
+    background: blue;
+
+    > h1 {
+      font-size: 2.5rem;
+    }
   }
 `
-//TODO Use CSS Variables
-//TODO Use Media Queries
+
 //TODO TopBoxA & TopBoxB repeating elements except grid-area. How to avoid duplication?
 const TopBoxA = styled.div`
   grid-area: top-box-a;
-  background: #ddd;
+  background: var(--primary);
   display: grid;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  box-shadow: var(--shadow);
   padding: 1.5rem;
 
   > p {
@@ -215,11 +273,11 @@ const TopBoxA = styled.div`
 
 const TopBoxB = styled.div`
   grid-area: top-box-b;
-  background: #ddd;
+  background: var(--primary);
   display: grid;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  box-shadow: var(--shadow);
   padding: 1.5rem;
 
   > p {
@@ -236,21 +294,27 @@ const Boxes = styled.section`
 `
 
 const Box = styled.div`
-  background: #ddd;
+  background: var(--primary);
   text-align: center;
   /* 1.5rem top and bottom 2rem left and right */
   padding: 1.5rem 2rem;
-  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  box-shadow: var(--shadow);
 `
 
 const Info = styled.section`
-  background: #ddd;
-  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  background: var(--primary);
+  box-shadow: var(--shadow);
   display: grid;
   grid-gap: 30px;
   grid-template-columns: repeat(2, 1fr);
   padding: 3rem;
   margin-bottom: 3rem;
+
+  @media screen and (max-width: 700px) {
+    > ul {
+      grid-template-columns: 1fr;
+    }
+  }
 `
 
 const Portfolio = styled.section`
@@ -260,14 +324,14 @@ const Portfolio = styled.section`
 
   > img {
     width: 100%;
-    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+    box-shadow: var(--shadow);
   }
 `
 
 const Footer = styled.footer`
   margin-top: 2rem;
-  background: #333;
-  color: #fff;
+  background: var(--dark);
+  color: var(--light);
   text-align: center;
   padding: 1rem;
 `
