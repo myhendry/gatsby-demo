@@ -24,18 +24,10 @@ const Design = () => {
           {/* Navigation */}
           <MainNav>
             <ul>
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="#">Services</a>
-              </li>
-              <li>
-                <a href="#">About</a>
-              </li>
-              <li>
-                <a href="#">Contact</a>
-              </li>
+              <GLink to="/">Home</GLink>
+              <GLink to="/about">About</GLink>
+              <GLink to="/flex">Flex</GLink>
+              <GLink to="/grid">Grid</GLink>
             </ul>
           </MainNav>
 
@@ -52,18 +44,24 @@ const Design = () => {
                 commodi ratione nam quidem sapiente voluptas, tempora reiciendis
                 inventore autem.
               </p>
-              <Button>Read More</Button>
+              <Button as={Link} to="/">
+                Read More
+              </Button>
             </Showcase>
 
             <TopBoxA>
               <h4>Membership</h4>
               <p>$199/mo</p>
-              <Button>Buy Now</Button>
+              <Button as={Link} to="/flex">
+                Read More
+              </Button>
             </TopBoxA>
             <TopBoxB>
               <h4>Professional</h4>
               <p>$299/mo</p>
-              <Button>Buy Now</Button>
+              <Button as={Link} to="/grid">
+                Buy Now
+              </Button>
             </TopBoxB>
           </TopContainer>
           {/* Boxes Section */}
@@ -103,8 +101,10 @@ const Design = () => {
           </Boxes>
           {/* Info Section */}
           <Info>
-            <h2>Your Business on the Web</h2>
+            <img src="https://image.ibb.co/j4Qz8x/pic1.jpg" alt="" />
+
             <div>
+              <h2>Your Business on the Web</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Possimus et perspiciatis quibusdam libero eligendi ratione
@@ -112,7 +112,9 @@ const Design = () => {
                 numquam omnis consequatur exercitationem praesentium minus sed
                 doloremque ipsum?
               </p>
-              <Button>Read More</Button>
+              <Button as={Link} to="/about">
+                Read More
+              </Button>
             </div>
           </Info>
           {/* Portfolio Section */}
@@ -137,17 +139,6 @@ const Design = () => {
   )
 }
 
-//TODO Style Links and Buttons
-const GLink = styled.div`
-  li a {
-    background: var(--dark);
-    color: var(--light);
-    padding: 0.6rem 1.3rem;
-    text-decoration: none;
-    border: 0;
-  }
-`
-
 const Container = styled.div`
   background: var(--secondary);
 `
@@ -159,25 +150,38 @@ const Body = styled.body`
   padding: 30px 50px;
 `
 
+const GLink = styled(Link)`
+  background: var(--primary);
+  display: block;
+  text-decoration: none;
+  padding: 0.8rem;
+  text-align: center;
+  color: var(--dark);
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow);
+`
+
 const Button = styled.button`
-  background: #333;
-  color: #fff;
+  background: var(--dark);
+  color: var(--light);
   padding: 0.6rem 1.3rem;
   text-decoration: none;
   border: 0;
+  text-align: center;
 `
 
 const MainNav = styled.nav`
   a {
-    background: #ddd;
+    background: var(--primary);
     display: block;
     text-decoration: none;
     padding: 0.8rem;
     text-align: center;
-    color: #333;
+    color: var(--dark);
     text-transform: uppercase;
     font-size: 1.1rem;
-    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+    box-shadow: var(--shadow);
   }
 
   > ul {
@@ -189,8 +193,8 @@ const MainNav = styled.nav`
   }
 
   a:hover {
-    background: #333;
-    color: #fff;
+    background: var(--dark);
+    color: var(--light);
   }
 
   @media screen and (max-width: 700px) {
@@ -215,7 +219,7 @@ const TopContainer = styled.div`
       'top-box-a top-box-b';
   }
 
-  @media screen and (max-width: 500px) {
+  @media mobile and (max-width: 500px) {
     grid-template-areas:
       'showcase'
       'top-box-a'
@@ -226,7 +230,8 @@ const TopContainer = styled.div`
 const Showcase = styled.div`
   grid-area: showcase;
   min-height: 400px;
-  background: var(--bilboard);
+  background: url(https://image.ibb.co/kYJK8x/showcase.jpg);
+  /* background: var(--bilboard); */
   padding: 3rem;
 
   display: flex;
@@ -248,7 +253,7 @@ const Showcase = styled.div`
   }
 
   @media screen and (max-width: 700px) {
-    background: blue;
+    background: var(--dark);
 
     > h1 {
       font-size: 2.5rem;
@@ -309,6 +314,10 @@ const Info = styled.section`
   grid-template-columns: repeat(2, 1fr);
   padding: 3rem;
   margin-bottom: 3rem;
+
+  > img {
+    width: 100%;
+  }
 
   @media screen and (max-width: 700px) {
     > ul {
