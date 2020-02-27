@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import styled from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
@@ -40,6 +40,25 @@ const Pattern = ({ data: { listing } }) => {
     <>
       <Container>
         <GlobalStyle />
+        <SectionF>
+          <div>
+            <ButtonA to={'/about'}>Button A</ButtonA>
+            <ButtonB to={'/design'}>Button B</ButtonB>
+            <ButtonC to={'/flex'}>Button C</ButtonC>
+          </div>
+
+          <StackContainer1>
+            <StackItem1>Stack Item 1</StackItem1>
+            <StackItem2>Stack Item 2</StackItem2>
+          </StackContainer1>
+
+          <StackContainer2>
+            <StackItem3
+              src={`https://images.unsplash.com/photo-1481026469463-66327c86e544?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1648&q=80`}
+            />
+            <StackItem4>Stack Item 4</StackItem4>
+          </StackContainer2>
+        </SectionF>
         <SectionE>
           <BoxE1>A</BoxE1>
           <BoxE2>
@@ -155,6 +174,114 @@ const Pattern = ({ data: { listing } }) => {
 const Container = styled.div`
   background-color: #f8d1e3;
   padding: 10px;
+`
+
+const StackContainer2 = styled.div`
+  position: relative;
+  height: 300px;
+`
+
+const StackItem3 = styled.img`
+  position: absolute;
+  background-color: #10333333;
+  /* left: 0;
+  top: 0; */
+  height: 180px;
+  width: 150px;
+  border-radius: 5px;
+`
+
+const StackItem4 = styled.div`
+  position: absolute;
+  background-color: #10ffe347;
+  padding: 10px;
+  z-index: 100;
+  border-radius: 5px;
+`
+
+const StackContainer1 = styled.div`
+  position: relative;
+`
+
+const StackItem1 = styled.div`
+  position: absolute;
+  background-color: green;
+  z-index: 100;
+`
+
+const StackItem2 = styled.div`
+  position: absolute;
+  background-color: yellow;
+  /* transform: translateX(-50%); */
+  transform: translate(-50%, -50%);
+`
+
+const SectionF = styled.div`
+  background-color: #e7e6f2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 0.5em;
+
+  > div {
+    display: flex;
+    border: 2px solid black;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+  }
+`
+
+const ButtonA = styled(Link)`
+  display: flex;
+  color: #fff;
+  background-color: #000;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  margin: 10px;
+
+  &:hover {
+    background-color: grey;
+  }
+`
+
+const ButtonB = styled(Link)`
+  display: flex;
+  color: chocolate;
+  background-color: #10000000;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  margin: 10px;
+
+  &:hover {
+    background-color: grey;
+  }
+`
+
+const ButtonC = styled(Link)`
+  display: flex;
+  color: #000;
+  background-color: #10ffe347;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  margin: 10px;
+
+  &:hover {
+    background-color: #5ff4d6;
+  }
 `
 
 const SectionE = styled.div`
@@ -274,7 +401,7 @@ const BoundImgD = styled.img`
 `
 
 const SectionC = styled.div`
-  background-color: F1E9DA;
+  background-color: #f1e9da;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
   grid-gap: 0.5em;
@@ -290,7 +417,7 @@ const BoxC = styled.div`
 `
 
 const SectionA = styled.div`
-  background-color: F1E9DA;
+  background-color: #f1e9da;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0.5em;
@@ -305,7 +432,7 @@ const BoxA = styled.div`
 `
 
 const SectionB = styled.div`
-  background-color: F1E9DA;
+  background-color: #f1e9da;
   display: grid;
   grid-gap: 0.5em;
   grid-template-areas:
