@@ -2,11 +2,10 @@ import React from 'react'
 
 import { MenuMember } from '../components/common'
 import { logout } from '../services/oAuth'
-import Layout from '../components/layout'
 
 const AccountHome = ({ user }) => {
   return (
-    <Layout>
+    <>
       <MenuMember />
       <p>Hi, {user ? user.name : 'friend'}!</p>
       <nav>
@@ -20,7 +19,7 @@ const AccountHome = ({ user }) => {
           Log Out
         </a>
       </nav>
-    </Layout>
+    </>
   )
 }
 

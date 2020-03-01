@@ -105,7 +105,7 @@ const Subtitle = styled.span`
   color: white;
 `
 
-const Body = styled.body`
+const Body = styled.div`
   display: flex;
   flex-direction: column;
   background-color: yellow;

@@ -46,11 +46,10 @@ const Layout = ({ children }) => {
               <Grid relaxed stackable>
                 <Grid.Column mobile={16} tablet={4} computer={4}>
                   <Menu vertical fluid>
-                    <LinkedItem to="/" exact>
+                    <LinkedItem to="/" exact="true">
                       Home
                     </LinkedItem>
                     <LinkedItem to="/about">About</LinkedItem>
-                    <LinkedItem to="/trips">Trips</LinkedItem>
                     <LinkedItem to="/content">Contentful</LinkedItem>
                     <LinkedItem to="/design">Design</LinkedItem>
                     <LinkedItem to="/pattern">Pattern</LinkedItem>

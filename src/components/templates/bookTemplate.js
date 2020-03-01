@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-import Layout from '../../components/layout'
-import { BookItem } from '../common'
+import { BookItem, BookComments } from '../common'
 import { graphql } from 'gatsby'
+import { FirebaseContext } from '../../services/Firebase'
 
 const BookTemplate = props => {
+  const { firebase } = useContext(FirebaseContext)
+
   return (
-    <Layout>
-      <div>Book Item</div>
+    <>
       <BookItem
         authorName={props.data.book.author.name}
         bookSummary={props.data.book.summary}
         bookTitle={props.data.book.title}
         bookCover={props.data.book.localImage.childImageSharp.fluid}
       />
-    </Layout>
+      {!!firebase && (
+        <BookComments bookId={props.data.book.id} firebase={firebase} />
+      )}
+    </>
   )
 }
 

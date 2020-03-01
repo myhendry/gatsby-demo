@@ -68,11 +68,10 @@ export default firebaseConfig
 
 ## TODO
 
-- Firestore CRUD
+- Deployment
 - Strapi
 - Apollo Graphql
 - Stripe
-- Deployment
 
 ## KIV
 
@@ -80,6 +79,8 @@ export default firebaseConfig
 
 ## DONE
 
+- Firebase CRUD
+- Firestore Register
 - Styled Component & CSS (Design - Industrial)
 - Contentful
 - Image Layout

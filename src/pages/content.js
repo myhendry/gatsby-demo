@@ -2,13 +2,11 @@ import React from 'react'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import { Card } from 'semantic-ui-react'
 
-import Layout from '../components/layout'
-
 export const Content = () => {
   const { tours } = useStaticQuery(GET_TOURS)
 
   return (
-    <Layout>
+    <>
       <Card.Group itemsPerRow={2}>
         {tours &&
           tours.edges.map(x => (
@@ -24,7 +22,7 @@ export const Content = () => {
             />
           ))}
       </Card.Group>
-    </Layout>
+    </>
   )
 }
 

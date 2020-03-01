@@ -2,6 +2,7 @@ import React from 'react'
 
 import { silentAuth } from './src/services/oAuth'
 import ReduxWrapper from './src/store/ReduxWrapper'
+const Layout = require('./src/components/layout').default
 
 class SessionCheck extends React.Component {
   constructor(props) {
@@ -40,4 +41,8 @@ export const wrapRootElement = props => {
       <ReduxWrapper {...props} />
     </SessionCheck>
   )
+}
+
+export const wrapPageElement = ({ element, props }) => {
+  return <Layout {...props}>{element}</Layout>
 }

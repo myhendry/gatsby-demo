@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
-import getFirebaseInstance from "./firebase"
-import loadFirebaseDependencies from "./loadFirebaseDependencies"
+import { useEffect, useState } from 'react'
+import getFirebaseInstance from './firebase'
+import loadFirebaseDependencies from './loadFirebaseDependencies'
 
 function useAuth() {
   const [user, setUser] = useState(null)

@@ -143,7 +143,7 @@ const Container = styled.div`
   background: var(--secondary);
 `
 
-const Body = styled.body`
+const Body = styled.div`
   display: grid;
   grid-gap: 20px;
   background: var(--secondary);

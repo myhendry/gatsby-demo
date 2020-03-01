@@ -14,7 +14,8 @@ export const MenuAdmin = () => {
       <LinkedItem to="/app/admin" exact>
         Admin
       </LinkedItem>
-      <LinkedItem to="/app/intranet">Intranet</LinkedItem>
+      <LinkedItem to="/app/record">Add Author</LinkedItem>
+      <LinkedItem to="/app/intranet">Add Book</LinkedItem>
     </Menu>
   )
 }

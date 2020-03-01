@@ -2,16 +2,17 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import styled, { keyframes } from 'styled-components'
 
 import { BookItem } from '../components/common'
 import SEO from '../components/seo'
-import Layout from '../components/layout'
 import { toggleDarkMode } from '../store/app'
 
 const IndexPage = props => {
   return (
-    <Layout>
+    <>
       <SEO title="Home" />
+      <Box />
       <button
         style={
           props.isDarkMode ? { background: 'black', color: 'white' } : null
@@ -37,10 +38,7 @@ const IndexPage = props => {
           </BookItem>
         ))}
       </section>
-      <section>
-        <div>Image</div>
-      </section>
-    </Layout>
+    </>
   )
 }
 
@@ -69,6 +67,41 @@ export const query = graphql`
           }
         }
       }
+    }
+  }
+`
+
+const Box = styled.div`
+  background-color: green;
+  height: 150px;
+  width: 150px;
+  margin: 0;
+  border-radius: 50%;
+  position: relative;
+  animation-name: myanimation;
+  animation-duration: 4s;
+  animation-iteration-count: 3;
+
+  @keyframes myanimation {
+    0% {
+      background-color: green;
+      left: 0px;
+    }
+    25% {
+      background-color: purple;
+      left: 25px;
+    }
+    50% {
+      background-color: red;
+      left: 50px;
+    }
+    75% {
+      background-color: darkblue;
+      left: 75px;
+    }
+    100% {
+      background-color: yellow;
+      left: 100px;
     }
   }
 `

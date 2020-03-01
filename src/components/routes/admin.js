@@ -6,7 +6,8 @@ import { FirebaseContext } from '../../services/Firebase'
 import { getUser, isLoggedIn, logout } from '../../services/auth'
 
 const Admin = () => {
-  const { firebase } = useContext(FirebaseContext)
+  const { firebase, user } = useContext(FirebaseContext)
+  // console.log('user', user)
 
   return (
     <>
