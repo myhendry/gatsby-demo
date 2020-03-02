@@ -7,12 +7,12 @@ exports.onCreatePage = async ({ actions, page }) => {
 
   // page.matchPath is a special key that's used for matching pages
   // only on the client.
-  if (page.path.match(/^\/app/)) {
-    page.matchPath = '/app/*'
+  // if (page.path.match(/^\/app/)) {
+  //   page.matchPath = '/app/*'
 
-    // Update the page.
-    createPage(page)
-  }
+  //   // Update the page.
+  //   createPage(page)
+  // }
 
   // page.matchPath is a special key that's used for matching pages
   // only on the client.
@@ -69,18 +69,18 @@ exports.createPages = ({ graphql, actions }) => {
 }
 
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === 'build-html') {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /auth0-js/,
-            use: loaders.null(),
-          },
-        ],
-      },
-    })
-  }
+  // if (stage === 'build-html') {
+  //   actions.setWebpackConfig({
+  //     module: {
+  //       rules: [
+  //         {
+  //           test: /auth0-js/,
+  //           use: loaders.null(),
+  //         },
+  //       ],
+  //     },
+  //   })
+  // }
 
   actions.setWebpackConfig({
     resolve: {
