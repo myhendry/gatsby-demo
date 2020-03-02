@@ -15,6 +15,17 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        // Arbitrary name for the remote schema Query type
+        typeName: 'CUSTOM',
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: 'custom',
+        // Url to query from
+        url: 'https://hendry-gql-server.herokuapp.com/graphql',
+      },
+    },
+    {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.CONTENTFUL_ID,

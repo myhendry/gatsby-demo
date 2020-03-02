@@ -55,6 +55,7 @@ const Layout = ({ children }) => {
                     <LinkedItem to="/pattern">Pattern</LinkedItem>
                     <LinkedItem to="/flex">Flexbox</LinkedItem>
                     <LinkedItem to="/grid">Grid</LinkedItem>
+                    <LinkedItem to="/custom">Custom</LinkedItem>
                     <LinkedItem to="/account">Members</LinkedItem>
                     <LinkedItem to="/app/admin">Admin</LinkedItem>
                   </Menu>
