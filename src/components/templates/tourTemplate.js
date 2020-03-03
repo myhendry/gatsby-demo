@@ -2,22 +2,21 @@ import React from 'react'
 import { Item, Card } from 'semantic-ui-react'
 import Img from 'gatsby-image'
 
-import Layout from '../layout'
 import { graphql } from 'gatsby'
 
 const tourTemplate = ({ data: { tour } }) => {
   return (
-    <Layout>
+    <>
       <Item>
         <Item.Content>
           <Item.Header as="a">{tour.country}</Item.Header>
           <Item.Meta>{tour.description.description}</Item.Meta>
           <Item.Description>
-            <Card.Group itemsPerRow={4}>
+            <Card.Group itemsPerRow={2}>
               {tour.images.map((item, index) => {
                 return (
-                  <Card fluid key={item.id}>
-                    <Img key={index} fluid={item.fluid} alt={item.name} />
+                  <Card fluid key={index}>
+                    <Img fluid={item.fluid} alt={item.name} />
                   </Card>
                 )
               })}
@@ -26,7 +25,7 @@ const tourTemplate = ({ data: { tour } }) => {
           <Item.Extra>{tour.started}</Item.Extra>
         </Item.Content>
       </Item>
-    </Layout>
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import { Card, Divider } from 'semantic-ui-react'
+import styled from 'styled-components'
 
 export const BookItem = ({
   authorName,
@@ -10,7 +11,7 @@ export const BookItem = ({
   children,
 }) => (
   <div>
-    <Img fluid={bookCover} />
+    <ImgBox fluid={bookCover} />
 
     <h2>
       {bookTitle} -<small>{authorName}</small>
@@ -49,3 +50,9 @@ export const BookItem = ({
     </Card.Group>
   </div>
 )
+
+const ImgBox = styled(Img)`
+  width: 20rem;
+  height: 30rem;
+  margin: 20px 0;
+`

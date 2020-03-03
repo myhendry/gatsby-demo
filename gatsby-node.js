@@ -65,6 +65,25 @@ exports.createPages = ({ graphql, actions }) => {
         context: { tourId: tour.node.id },
       })
     })
+
+    const tours = result.data.tours.edges
+    const toursPerPage = 2
+    const numPages = Math.ceil(tours.length / toursPerPage)
+
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/tours` : `/tours/${i + 1}`,
+        component: path.resolve(
+          './src/components/templates/tour-list-template.js'
+        ),
+        context: {
+          limit: toursPerPage,
+          skip: i * toursPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
+    })
   })
 }
 

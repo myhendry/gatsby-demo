@@ -12,7 +12,7 @@ const Admin = () => {
   return (
     <>
       <MenuAdmin />
-      <h1>Your profile</h1>
+      <h1>Using Firebase Authentication</h1>
       {isLoggedIn() ? (
         <>
           <a

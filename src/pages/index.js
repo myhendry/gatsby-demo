@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 import { BookItem } from '../components/common'
 import SEO from '../components/seo'
@@ -12,16 +12,23 @@ const IndexPage = props => {
   return (
     <>
       <SEO title="Home" />
-      <Box />
-      <button
-        style={
-          props.isDarkMode ? { background: 'black', color: 'white' } : null
-        }
-        onClick={() => props.dispatch(toggleDarkMode(!props.isDarkMode))}
-      >
-        Test Redux
-      </button>
       <section>
+        <h1>Using CSS Keyframes</h1>
+        <Box />
+      </section>
+      <section>
+        <h1>Using Firestore</h1>
+        <button
+          style={
+            props.isDarkMode ? { background: 'black', color: 'white' } : null
+          }
+          onClick={() => props.dispatch(toggleDarkMode(!props.isDarkMode))}
+        >
+          Using Redux
+        </button>
+      </section>
+      <section>
+        <h1>Using Firestore</h1>
         {props.data.allBook.edges.map(edge => (
           <BookItem
             bookTitle={edge.node.title}

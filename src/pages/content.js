@@ -7,20 +7,23 @@ export const Content = () => {
 
   return (
     <>
+      <h1>Using Contentful</h1>
       <Card.Group itemsPerRow={2}>
         {tours &&
-          tours.edges.map(x => (
-            <Card
-              fluid
-              key={x.node.id}
-              image={x.node.images[0].fluid}
-              header={x.node.country}
-              meta={x.node.price}
-              description={x.node.description.description}
-              as={Link}
-              to={`/tour/${x.node.slug}`}
-            />
-          ))}
+          tours.edges.map(x => {
+            return (
+              <Card
+                fluid
+                key={x.node.contentful_id}
+                image={x.node.images[0].fluid}
+                header={x.node.country}
+                meta={x.node.price}
+                description={x.node.description.description}
+                as={Link}
+                to={`/tour/${x.node.slug}`}
+              />
+            )
+          })}
       </Card.Group>
     </>
   )
@@ -35,8 +38,8 @@ const GET_TOURS = graphql`
           name
           price
           images {
-            fluid {
-              ...GatsbyContentfulFluid_withWebp
+            fluid(maxWidth: 1600) {
+              ...GatsbyContentfulFluid
             }
           }
           days
@@ -46,6 +49,7 @@ const GET_TOURS = graphql`
           description {
             description
           }
+          contentful_id
         }
       }
     }

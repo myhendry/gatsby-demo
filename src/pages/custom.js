@@ -18,9 +18,9 @@ const Custom = () => {
   return (
     <div>
       <h1>Using Third Party Graphql API</h1>
-      {custom.getBooks.map(x => {
+      {custom.getBooks.map((x, index) => {
         return (
-          <div>
+          <div key={index}>
             <p>{x.title}</p>
             <p>{x.author}</p>
             <p>- - - - - - - - -</p>

@@ -7,6 +7,7 @@ const AccountHome = ({ user }) => {
   return (
     <>
       <MenuMember />
+      <h1>Using Auth0</h1>
       <p>Hi, {user ? user.name : 'friend'}!</p>
       <nav>
         <a
