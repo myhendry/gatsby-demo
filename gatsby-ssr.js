@@ -1,3 +1,14 @@
+/*
+const React = require('react')
+const Layout = require('./src/components/layout').default
+
+export const wrapPageElement = ({ element, props }) => {
+  return <Layout {...props}>{element}</Layout>
+}
+
+export { default as wrapRootElement } from './src/store/ReduxWrapper'
+*/
+
 const React = require('react')
 const ApolloProvider = require('@apollo/react-hooks')
 
@@ -10,9 +21,5 @@ export const wrapPageElement = ({ element, props }) => {
 }
 
 export const wrapRootElement = props => {
-  return (
-    <ApolloProvider client={client}>
-      <ReduxWrapper {...props} />
-    </ApolloProvider>
-  )
+  return <ReduxWrapper {...props} />
 }

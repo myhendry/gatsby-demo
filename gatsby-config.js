@@ -7,13 +7,23 @@ module.exports = {
     title: 'Gatsby World',
     description: `Live Fully`,
     author: `@hendrylim`,
+    siteUrl: 'https://hendry-gatsby.netlify.com',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-styled-components`,
     'gatsby-plugin-less',
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://hendry-gatsby.netlify.com',
+        sitemap: 'https://hendry-gatsby.netlify.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
     {
       resolve: 'gatsby-source-graphql',
       options: {
