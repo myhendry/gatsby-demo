@@ -2,15 +2,27 @@ import React, { useContext, useEffect } from 'react'
 import { navigate, Link } from 'gatsby'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-
 import { setUser, isLoggedIn } from '../../services/auth'
 import { Button, Form, Input, Message } from 'semantic-ui-react'
 import { FirebaseContext } from '../../services/Firebase'
+// import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+// import * as firebase from 'firebase'
 
 const Login = () => {
+  const { firebase: fb } = useContext(FirebaseContext)
+
+  // let uiConfig = {
+  //   signInFlow: 'popup',
+  //   signInOptions: [firebase.auth.FacebookAuthProvider.PROVIDER_ID],
+  //   callbacks: {
+  //     signInSuccessWithAuthResult: () => false,
+  //   },
+  // }
+
   let isMounted = true
 
   useEffect(() => {
+    console.log('isLoggedIn ', isLoggedIn())
     if (isLoggedIn()) {
       navigate('app/admin')
     }
@@ -19,11 +31,15 @@ const Login = () => {
     }
   }, [])
 
-  const { firebase } = useContext(FirebaseContext)
+  // const facebookOAuthSubmit = () => {
+  //   fb.facebookOAuth().then(res => {
+  //     console.log('res ', res)
+  //     navigate('app/admin')
+  //   })
+  // }
 
   const handleSubmit = ({ email, password }, bag) => {
-    firebase
-      .login({ email, password })
+    fb.login({ email, password })
       .then(() => {
         setUser({
           email,
@@ -47,66 +63,70 @@ const Login = () => {
   })
 
   return (
-    <Formik
-      initialValues={{
-        username: '',
-        email: '',
-        password: '',
-      }}
-      onSubmit={handleSubmit}
-      validationSchema={validationSchema}
-    >
-      {({
-        errors,
-        touched,
-        values,
-        handleChange,
-        handleSubmit,
-        handleBlur,
-        isSubmitting,
-        isValid,
-      }) => (
-        <Form onSubmit={handleSubmit} error={!!errors.message}>
-          <Form.Field>
-            <Input
-              name="email"
-              placeholder="Email"
-              type="email"
-              values={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={!!errors.email}
-            />
-            {errors.email && touched.email && <div>{errors.email}</div>}
-          </Form.Field>
-          <Form.Field>
-            <Input
-              name="password"
-              placeholder="Password"
-              type="password"
-              values={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              errors={!!errors.password}
-            />
-            {errors.password && touched.password && (
-              <div>{errors.password}</div>
-            )}
-          </Form.Field>
-          <Message error header="Oops!" content={errors.message} />
-          <Button
-            loading={isSubmitting}
-            primary
-            disabled={!isValid || isSubmitting}
-          >
-            Submit
-          </Button>
-          <div>
-            <Link to={'/app/register'}>Go to Register</Link>
-          </div>
-        </Form>
-      )}
-    </Formik>
+    <>
+      {/* <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} /> */}
+      {/* <Button onClick={facebookOAuthSubmit}>Facebook OAuth</Button> */}
+      <Formik
+        initialValues={{
+          username: '',
+          email: '',
+          password: '',
+        }}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+      >
+        {({
+          errors,
+          touched,
+          values,
+          handleChange,
+          handleSubmit,
+          handleBlur,
+          isSubmitting,
+          isValid,
+        }) => (
+          <Form onSubmit={handleSubmit} error={!!errors.message}>
+            <Form.Field>
+              <Input
+                name="email"
+                placeholder="Email"
+                type="email"
+                values={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={!!errors.email}
+              />
+              {errors.email && touched.email && <div>{errors.email}</div>}
+            </Form.Field>
+            <Form.Field>
+              <Input
+                name="password"
+                placeholder="Password"
+                type="password"
+                values={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                errors={!!errors.password}
+              />
+              {errors.password && touched.password && (
+                <div>{errors.password}</div>
+              )}
+            </Form.Field>
+            <Message error header="Oops!" content={errors.message} />
+            <Button
+              loading={isSubmitting}
+              primary
+              disabled={!isValid || isSubmitting}
+            >
+              Submit
+            </Button>
+            <div>
+              <Link to={'/app/register'}>Go to Register</Link>
+            </div>
+          </Form>
+        )}
+      </Formik>
+    </>
   )
 }
 

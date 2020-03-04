@@ -1,6 +1,6 @@
 import firebaseConfig from './config'
-// import axios from "axios"
 
+let firebaseInstance
 class Firebase {
   constructor(app) {
     if (!firebaseInstance) {
@@ -73,12 +73,15 @@ class Firebase {
     return this.auth.signInWithEmailAndPassword(email, password)
   }
 
+  // async facebookOAuth() {
+  //   const provider = firebaseInstance.auth.FacebookAuthProvider()
+  //   return this.auth.signInWithPopup(provider)
+  // }
+
   async logout() {
     await this.auth.signOut()
   }
 }
-
-let firebaseInstance
 
 function getFirebaseInstance(app) {
   if (!firebaseInstance && app) {

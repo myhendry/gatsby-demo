@@ -75,25 +75,15 @@ class SessionCheck extends React.Component {
   }
 }
 
-// export { default as wrapRootElement } from './src/state/ReduxWrapper';
-
-// export const wrapRootElement = ({ element }) => {
-//   return <SessionCheck>{element}</SessionCheck>
-// }
-
 export const wrapRootElement = props => {
   return (
-    <ApolloProvider client={client}>
-      <SessionCheck>
+    <SessionCheck>
+      <ApolloProvider client={client}>
         <ReduxWrapper {...props} />
-      </SessionCheck>
-    </ApolloProvider>
+      </ApolloProvider>
+    </SessionCheck>
   )
 }
-
-// export const wrapRootElement = props => {
-//   return <ReduxWrapper {...props} />
-// }
 
 export const wrapPageElement = ({ element, props }) => {
   return <Layout {...props}>{element}</Layout>

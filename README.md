@@ -81,7 +81,6 @@ export default firebaseConfig
 
 ## TODO
 
-- SEO
 - Firebase OAuth
 - Apollo Graphql Mutations
 - Apollo Graphql Subscriptions
@@ -97,6 +96,7 @@ export default firebaseConfig
 
 ## DONE
 
+- SEO
 - Contentful Pagination
 - Deployment
 - Firebase CRUD

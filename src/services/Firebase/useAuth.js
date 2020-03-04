@@ -16,6 +16,7 @@ function useAuth() {
       setFirebase(firebaseInstance)
 
       unsubscribe = firebaseInstance.auth.onAuthStateChanged(userResult => {
+        console.log('userResult ', userResult)
         if (userResult) {
           publicProfileUnsubscribe = firebaseInstance.getUserProfile({
             userId: userResult.uid,
