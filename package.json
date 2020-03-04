@@ -37,6 +37,7 @@
     "react-helmet": "^5.2.0",
     "react-icons": "^3.9.0",
     "react-redux": "^7.2.0",
+    "react-with-firebase-auth": "^1.3.0",
     "redux": "^4.0.5",
     "semantic-ui-less": "^2.3.3",
     "semantic-ui-react": "^0.82.1",

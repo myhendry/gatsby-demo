@@ -11,14 +11,6 @@ import { FirebaseContext } from '../../services/Firebase'
 const Login = () => {
   const { firebase: fb } = useContext(FirebaseContext)
 
-  // let uiConfig = {
-  //   signInFlow: 'popup',
-  //   signInOptions: [firebase.auth.FacebookAuthProvider.PROVIDER_ID],
-  //   callbacks: {
-  //     signInSuccessWithAuthResult: () => false,
-  //   },
-  // }
-
   let isMounted = true
 
   useEffect(() => {
@@ -31,9 +23,15 @@ const Login = () => {
     }
   }, [])
 
+  //TODO Cannot redirect to app/admin
   // const facebookOAuthSubmit = () => {
-  //   fb.facebookOAuth().then(res => {
-  //     console.log('res ', res)
+  //   const provider = new firebase.auth.FacebookAuthProvider()
+  //   console.log(provider)
+  //   fb.facebookOAuth(provider).then(res => {
+  //     setUser({
+  //       email: res.email,
+  //       // password
+  //     })
   //     navigate('app/admin')
   //   })
   // }
@@ -43,7 +41,7 @@ const Login = () => {
       .then(() => {
         setUser({
           email,
-          password,
+          // password
         })
         navigate('app/admin')
       })
@@ -64,7 +62,6 @@ const Login = () => {
 
   return (
     <>
-      {/* <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} /> */}
       {/* <Button onClick={facebookOAuthSubmit}>Facebook OAuth</Button> */}
       <Formik
         initialValues={{
