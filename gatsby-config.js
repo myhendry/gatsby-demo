@@ -10,6 +10,7 @@ module.exports = {
     siteUrl: 'https://hendry-gatsby.netlify.com',
   },
   plugins: [
+    'gatsby-plugin-playground',
     'gatsby-plugin-react-helmet',
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-styled-components`,
