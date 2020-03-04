@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "author": "Richard Blechinger <me@blechi.at>",
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
+    "apollo-boost": "^0.4.7",
     "auth0-js": "^9.12.2",
     "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0",
@@ -23,6 +25,7 @@
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-source-graphql": "^2.1.33",
     "gatsby-transformer-sharp": "^2.3.14",
+    "isomorphic-fetch": "^2.2.1",
     "less": "^3.8.1",
     "moment": "^2.24.0",
     "react": "^16.4.1",

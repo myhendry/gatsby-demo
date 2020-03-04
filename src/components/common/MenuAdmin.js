@@ -16,6 +16,7 @@ export const MenuAdmin = () => {
       </LinkedItem>
       <LinkedItem to="/app/record">Add Author</LinkedItem>
       <LinkedItem to="/app/intranet">Add Book</LinkedItem>
+      <LinkedItem to="/app/graph">Apollo Client</LinkedItem>
     </Menu>
   )
 }

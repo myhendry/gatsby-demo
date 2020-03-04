@@ -1,5 +1,7 @@
 import React from 'react'
+import { ApolloProvider } from '@apollo/react-hooks'
 
+import { client } from './src/services/apollo/client'
 import { silentAuth } from './src/services/oAuth'
 import ReduxWrapper from './src/store/ReduxWrapper'
 const Layout = require('./src/components/layout').default
@@ -37,9 +39,11 @@ class SessionCheck extends React.Component {
 
 export const wrapRootElement = props => {
   return (
-    <SessionCheck>
-      <ReduxWrapper {...props} />
-    </SessionCheck>
+    <ApolloProvider client={client}>
+      <SessionCheck>
+        <ReduxWrapper {...props} />
+      </SessionCheck>
+    </ApolloProvider>
   )
 }
 

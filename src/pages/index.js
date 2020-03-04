@@ -17,7 +17,7 @@ const IndexPage = props => {
         <Box />
       </section>
       <section>
-        <h1>Using Firestore</h1>
+        <h1>Using Redux</h1>
         <button
           style={
             props.isDarkMode ? { background: 'black', color: 'white' } : null
