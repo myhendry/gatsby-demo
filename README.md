@@ -87,6 +87,7 @@ export default firebaseConfig
 - Formik Image Upload
 - Strapi
 - Snipcart
+- PWA
 - Blockchain
 - Passport
 

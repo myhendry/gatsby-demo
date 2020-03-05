@@ -52,6 +52,7 @@ const Layout = ({ children }) => {
                     <LinkedItem to="/about">About</LinkedItem>
                     <LinkedItem to="/content">Contentful</LinkedItem>
                     <LinkedItem to="/tours">Tours</LinkedItem>
+                    <LinkedItem to="/strapi">Shopping</LinkedItem>
                     <LinkedItem to="/design">Design</LinkedItem>
                     <LinkedItem to="/pattern">Pattern</LinkedItem>
                     <LinkedItem to="/flex">Flexbox</LinkedItem>
