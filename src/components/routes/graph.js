@@ -1,6 +1,9 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
+
+import { MenuAdmin } from '../common'
 
 // This query is executed at run time by Apollo - on Client
 const APOLLO_QUERY = gql`
@@ -17,6 +20,7 @@ const Graph = () => {
 
   return (
     <div>
+      <MenuAdmin />
       <h1>Using Apollo GraphQL Client</h1>
       <h5>
         GraphQL Server on{' '}
@@ -37,16 +41,11 @@ const Graph = () => {
             </p>
           )
         })}
+      <div>
+        <Link to="app/add">Add</Link>
+      </div>
     </div>
   )
 }
 
 export default Graph
-
-// import React from 'react'
-
-// const Graph = () => {
-//   return <div>Graph</div>
-// }
-
-// export default Graph

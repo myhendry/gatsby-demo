@@ -4,9 +4,10 @@ This is my boilerplate for a Gatsby hybrid app. I have added in simple-auth with
 
 ## CREDITS
 
-Gatsby Semantic-UI starter https://github.com/pretzelhands/gatsby-starter-semantic-ui
-Gatsby JS & Firebase (Tom Phillips) Udemy Course https://www.udemy.com/share/1024WWA0MZcV9VQnw=/
-Gatsby Tutorial & Projects Course (Smilga) https://www.udemy.com/share/101XUAA0MZcV9VQnw=/
+- Gatsby Semantic-UI starter https://github.com/pretzelhands/gatsby-starter-semantic-ui
+- Gatsby JS & Firebase (Tom Phillips) Udemy Course https://www.udemy.com/share/1024WWA0MZcV9VQnw=/
+- Gatsby Tutorial & Projects Course (Smilga) https://www.udemy.com/share/101XUAA0MZcV9VQnw=/
+- Jeremy Albright for helping me so much on Spectrum to make this repo possible
 
 ## GETTING STARTED
 
@@ -82,7 +83,6 @@ export default firebaseConfig
 ## TODO
 
 - Firebase OAuth
-- Apollo Graphql Mutations
 - Apollo Graphql Subscriptions
 - Formik Image Upload
 - Strapi
@@ -97,6 +97,7 @@ export default firebaseConfig
 
 ## DONE
 
+- Apollo Graphql Mutations
 - SEO
 - Contentful Pagination
 - Deployment

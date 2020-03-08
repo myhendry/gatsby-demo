@@ -2,16 +2,15 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import logo from '../images/logo.svg'
+// import logo from '../images/logo.svg'
 
 const Flex = () => {
   return (
     <Container>
       <Header>
-        <Link to="/">
+        {/* <Link to="/">
           <img src={logo} alt="Logo" />
-        </Link>
-        <Subtitle>New Order</Subtitle>
+        </Link> */}
         <NavLinks>
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/about">About</StyledLink>
