@@ -1,29 +1,24 @@
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import { navigate } from 'gatsby'
-import gql from 'graphql-tag'
 
-const APOLLO_MUTATION = gql`
-  mutation ADD_BOOK($title: String!, $author: String!) {
-    addBook(title: $title, author: $author) {
-      _id
-      title
-    }
-  }
-`
+import { GET_BOOK_QUERY } from '../../graphql/queries'
+import { ADD_BOOK_MUTATION } from '../../graphql/mutations'
 
 const Add = () => {
   const [author, setAuthor] = useState('')
   const [title, setTitle] = useState('')
-  const [msg, setMsg] = useState('')
-  const [addBook, { data }] = useMutation(APOLLO_MUTATION)
+  const [addBook] = useMutation(ADD_BOOK_MUTATION)
 
   return (
     <div>
       <form
         onSubmit={e => {
           e.preventDefault()
-          addBook({ variables: { title, author } }).then(() => {
+          addBook({
+            variables: { title, author },
+            refetchQueries: [{ query: GET_BOOK_QUERY }],
+          }).then(() => {
             navigate('/app/graph')
           })
         }}
@@ -47,9 +42,6 @@ const Add = () => {
           }}
         />
         <button type="submit">Add Todo</button>
-        <div>
-          <span>{msg}</span>
-        </div>
       </form>
     </div>
   )

@@ -1,22 +1,12 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
 
+import { GET_BOOK_QUERY } from '../../graphql/queries'
 import { MenuAdmin } from '../common'
 
-// This query is executed at run time by Apollo - on Client
-const APOLLO_QUERY = gql`
-  {
-    getBooks {
-      title
-      author
-    }
-  }
-`
-
 const Graph = () => {
-  const { loading, error, data } = useQuery(APOLLO_QUERY)
+  const { loading, error, data } = useQuery(GET_BOOK_QUERY)
 
   return (
     <div>
