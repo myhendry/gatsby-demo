@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/react-hooks'
+import { navigate } from 'gatsby'
 import gql from 'graphql-tag'
 
 const APOLLO_MUTATION = gql`
   mutation ADD_BOOK($title: String!, $author: String!) {
-    addBook(title: $title, author: $author)
+    addBook(title: $title, author: $author) {
+      _id
+      title
+    }
   }
 `
 
@@ -19,7 +23,9 @@ const Add = () => {
       <form
         onSubmit={e => {
           e.preventDefault()
-          addBook({ variables: { title, author } })
+          addBook({ variables: { title, author } }).then(() => {
+            navigate('/app/graph')
+          })
         }}
       >
         <input

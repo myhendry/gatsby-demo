@@ -42,7 +42,7 @@ const Graph = () => {
           )
         })}
       <div>
-        <Link to="app/add">Add</Link>
+        <Link to="/app/add">Add</Link>
       </div>
     </div>
   )
