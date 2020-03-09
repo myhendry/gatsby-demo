@@ -1,12 +1,17 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery, useSubscription } from '@apollo/react-hooks'
 
 import { GET_BOOK_QUERY } from '../../graphql/queries'
+import { BOOK_ADDED_SUBSCRIPTION } from '../../graphql/subscriptions'
 import { MenuAdmin } from '../common'
 
 const Graph = () => {
   const { loading, error, data } = useQuery(GET_BOOK_QUERY)
+  const { data: subscribedData, loading: subscribedLoading } = useSubscription(
+    BOOK_ADDED_SUBSCRIPTION
+  )
+  console.log(subscribedData, subscribedLoading)
 
   return (
     <div>

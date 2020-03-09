@@ -82,12 +82,12 @@ export default firebaseConfig
 
 ## TODO
 
-- Firebase OAuth
 - Apollo Graphql Subscriptions
+- Firebase OAuth
+- Passport
 - Formik Image Upload
 - Strapi
 - Snipcart
-- Passport
 - PWA
 - Blockchain
 
