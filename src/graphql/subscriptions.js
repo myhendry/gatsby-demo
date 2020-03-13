@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 const BOOK_ADDED_SUBSCRIPTION = gql`
   subscription {
     bookAdded {
-      _id
+      id
       title
       author
     }

@@ -19,6 +19,7 @@
     "firebase": "^7.8.2",
     "formik": "^2.1.4",
     "gatsby": "2.19.18",
+    "gatsby-background-image": "^0.10.2",
     "gatsby-firesource": "^2.0.3",
     "gatsby-image": "^2.2.41",
     "gatsby-plugin-google-fonts": "^1.0.1",
@@ -51,7 +52,6 @@
     "semantic-ui-react": "^0.82.1",
     "styled-components": "^5.0.1",
     "subscriptions-transport-ws": "^0.9.16",
-    "ws": "^7.2.2",
     "yup": "^0.28.1"
   },
   "keywords": [

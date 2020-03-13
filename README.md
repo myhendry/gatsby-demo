@@ -79,38 +79,3 @@ export default firebaseConfig
 ```
 
 4. yarn start
-
-## TODO
-
-- Apollo Graphql Subscriptions
-- Firebase OAuth
-- Passport
-- Formik Image Upload
-- Strapi
-- Snipcart
-- PWA
-- Blockchain
-
-## KIV
-
-- Typescript
-
-## DONE
-
-- Apollo Graphql Mutations
-- SEO
-- Contentful Pagination
-- Deployment
-- Firebase CRUD
-- Firestore Register
-- Styled Component & CSS (Design - Industrial)
-- Contentful
-- Image Layout
-- Organize
-- Port to Semantic-UI-React
-- Email & Password Auth
-- Redux
-- Formik
-- OAuth
-- Admin
-- Auth
