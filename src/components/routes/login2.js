@@ -5,8 +5,10 @@ import * as Yup from 'yup'
 import { setUser, isLoggedIn } from '../../services/auth'
 import { Button, Form, Input, Message } from 'semantic-ui-react'
 import { FirebaseContext } from '../../services/Firebase'
+// import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+// import * as firebase from 'firebase'
 
-const Login = () => {
+const Login2 = () => {
   const { firebase: fb } = useContext(FirebaseContext)
 
   let isMounted = true
@@ -20,6 +22,19 @@ const Login = () => {
       isMounted = false
     }
   }, [])
+
+  //TODO Cannot redirect to app/admin
+  // const facebookOAuthSubmit = () => {
+  //   const provider = new firebase.auth.FacebookAuthProvider()
+  //   console.log(provider)
+  //   fb.facebookOAuth(provider).then(res => {
+  //     setUser({
+  //       email: res.email,
+  //       // password
+  //     })
+  //     navigate('app/admin')
+  //   })
+  // }
 
   const handleSubmit = ({ email, password }, bag) => {
     fb.login({ email, password })
@@ -112,4 +127,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login2
