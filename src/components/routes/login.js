@@ -2,18 +2,25 @@ import React, { useContext, useEffect } from 'react'
 import { navigate, Link } from 'gatsby'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { setUser, isLoggedIn } from '../../services/auth'
+import { setGQLUser, isGQLLoggedIn } from '../../services/auth'
 import { Button, Form, Input, Message } from 'semantic-ui-react'
-import { FirebaseContext } from '../../services/Firebase'
+import { graphql, withApollo } from 'react-apollo'
+import { SIGNIN_MUTATION } from '../../graphql/mutations'
 
-const Login = () => {
-  const { firebase: fb } = useContext(FirebaseContext)
+/*
+// Converting login from graphql to firebase
+login.js
+privateRoute.js
+app/admin.js
+auth.js
+*/
 
+const Login = props => {
   let isMounted = true
 
   useEffect(() => {
-    console.log('isLoggedIn ', isLoggedIn())
-    if (isLoggedIn()) {
+    console.log('isLoggedIn ', isGQLLoggedIn())
+    if (isGQLLoggedIn()) {
       navigate('app/admin')
     }
     return () => {
@@ -21,19 +28,24 @@ const Login = () => {
     }
   }, [])
 
-  const handleSubmit = ({ email, password }, bag) => {
-    fb.login({ email, password })
-      .then(() => {
-        setUser({
+  const handleSubmit = async ({ email, password }, bag) => {
+    try {
+      const { data } = await props.signIn({
+        variables: {
           email,
-          // password
-        })
-        navigate('app/admin')
+          password,
+        },
       })
-      .catch(error => {
-        bag.setErrors(error)
-        bag.setSubmitting(false)
-      })
+
+      const token = data.signin.token
+      setGQLUser(token)
+
+      navigate('app/admin')
+    } catch (error) {
+      console.log(error)
+      bag.setSubmitting(false)
+      bag.setErrors(error)
+    }
   }
 
   const validationSchema = Yup.object().shape({
@@ -47,7 +59,6 @@ const Login = () => {
 
   return (
     <>
-      {/* <Button onClick={facebookOAuthSubmit}>Facebook OAuth</Button> */}
       <Formik
         initialValues={{
           username: '',
@@ -112,4 +123,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default graphql(SIGNIN_MUTATION, { name: 'signIn' })(Login)

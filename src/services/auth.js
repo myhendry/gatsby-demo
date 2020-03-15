@@ -1,26 +1,35 @@
-export const isBrowser = () => typeof window !== "undefined"
+export const isBrowser = () => typeof window !== 'undefined'
 
+//! USE WITH GRAPHQL
+export const setGQLUser = token =>
+  window.localStorage.setItem('token', `Bearer ${token}`)
+
+export const getGQLUser = () =>
+  isBrowser() && window.localStorage.getItem('token')
+    ? window.localStorage.getItem('token')
+    : ''
+
+export const isGQLLoggedIn = () => {
+  const token = getGQLUser()
+  console.log('gql token ', token)
+
+  return !!token
+}
+
+export const GQLlogout = callback => {
+  // setUser(null)
+  window.localStorage.removeItem('token')
+  callback()
+}
+
+//! USE WITH FIREBASE
 export const getUser = () =>
-  isBrowser() && window.localStorage.getItem("gatsbyUser")
-    ? JSON.parse(window.localStorage.getItem("gatsbyUser"))
+  isBrowser() && window.localStorage.getItem('gatsbyUser')
+    ? JSON.parse(window.localStorage.getItem('gatsbyUser'))
     : {}
 
 export const setUser = user =>
-  window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
-
-/*
-export const handleLogin = ({ username, password }) => {
-  if (username === `john` && password === `pass`) {
-    return setUser({
-      username: `john`,
-      name: `Johnny`,
-      email: `johnny@example.org`,
-    })
-  }
-
-  return false
-}
-*/
+  window.localStorage.setItem('gatsbyUser', JSON.stringify(user))
 
 export const isLoggedIn = () => {
   const user = getUser()

@@ -8,7 +8,7 @@ import { FirebaseContext } from '../../services/Firebase'
 // import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 // import * as firebase from 'firebase'
 
-const Login2 = () => {
+const Login = () => {
   const { firebase: fb } = useContext(FirebaseContext)
 
   let isMounted = true
@@ -127,4 +127,4 @@ const Login2 = () => {
   )
 }
 
-export default Login2
+export default Login
