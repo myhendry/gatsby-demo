@@ -27,9 +27,11 @@ const wsLink = process.browser
     })
   : null
 
+const isBrowser = () => typeof window !== 'undefined'
+
 // authMiddleware
 const authLink = setContext(async (req, { headers }) => {
-  const token = await localStorage.getItem('token')
+  const token = localStorage.getItem('token')
   console.log('apollo client token', token)
 
   return {
