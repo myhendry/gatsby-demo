@@ -3,6 +3,7 @@ import Img from 'gatsby-image'
 import { graphql, StaticQuery } from 'gatsby'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import styled from 'styled-components'
 
 const CarouselPage = ({ data }) => {
   const images = data.allFile.nodes
@@ -10,7 +11,7 @@ const CarouselPage = ({ data }) => {
 
   for (let image of images) {
     slides.push(
-      <div>
+      <div key={image.id}>
         <Img fluid={image.childImageSharp.fluid} alt="Image"></Img>
       </div>
     )
@@ -30,6 +31,7 @@ export const query = graphql`
   query slideshow {
     allFile(filter: { relativePath: { regex: "/slideshow/" } }) {
       nodes {
+        id
         name
         childImageSharp {
           fluid(maxWidth: 1024) {

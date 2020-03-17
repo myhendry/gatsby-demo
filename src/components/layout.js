@@ -8,6 +8,19 @@ import { FirebaseContext, useAuth } from '../services/Firebase'
 import Header from './header'
 import Footer from './footer'
 import 'semantic-ui-less/semantic.less'
+import './layout.css'
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+  :root {
+    --primary: #ddd;
+    --secondary: #ccc;
+    --dark: #333;
+    --light: #fff;
+    --bilboard: #330000;
+    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  }
+`
 
 const LinkedItem = ({ children, ...props }) => (
   <Menu.Item as={Link} activeClassName="active" {...props}>
@@ -38,6 +51,7 @@ const Layout = ({ children }) => {
               { name: 'keywords', content: 'sample, something' },
             ]}
           />
+          <GlobalStyle />
 
           <FirebaseContext.Provider value={{ user, firebase, loading }}>
             <Header siteTitle={data.site.siteMetadata.title} />
@@ -51,6 +65,7 @@ const Layout = ({ children }) => {
                     </LinkedItem>
                     <LinkedItem to="/about">About</LinkedItem>
                     <LinkedItem to="/hooks">Hooks</LinkedItem>
+                    <LinkedItem to="/cool">Cool</LinkedItem>
                     <LinkedItem to="/carousel">Carousel</LinkedItem>
                     <LinkedItem to="/content">Contentful</LinkedItem>
                     <LinkedItem to="/tours">Tours</LinkedItem>
